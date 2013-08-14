@@ -3,7 +3,7 @@
 Plugin Name: WP fail2ban
 Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Description: Write all login attempts to syslog for integration with fail2ban.
-Version: 2.0.0
+Version: 2.0.1
 Author: Charles Lecklider
 Author URI: https://charles.lecklider.org/
 License: GPL2
@@ -47,7 +47,7 @@ function remote_addr()
 	$ip = $_SERVER['REMOTE_ADDR'];
 
 	if (defined('WP_FAIL2BAN_PROXIES')) {
-		if (array_key_exists($_SERVER,'HTTP_X_FORWARDED_FOR')) {
+		if (array_key_exists('HTTP_X_FORWARDED_FOR',$_SERVER)) {
 			if (in_array($ip, explode(',',WP_FAIL2BAN_PROXIES) )) {
 				$ip = (false===($len = strpos($_SERVER['HTTP_X_FORWARDED_FOR'],',')))
 						? $_SERVER['HTTP_X_FORWARDED_FOR']

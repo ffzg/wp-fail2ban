@@ -5,7 +5,7 @@ Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Tags: fail2ban, security, syslog, login
 Requires at least: 3.4.0
 Tested up to: 3.6
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ to the `[wordpress]` section in `jail.local`.
 
 == Changelog ==
 
+= 2.0.1 =
+*	Bugfix in *experimental* `WP_FAIL2BAN_PROXIES` code.
+
 = 2.0.0 =
 *	Add *experimental* support for X-Forwarded-For header; see `WP_FAIL2BAN_PROXIES`
 *	Add *experimental* support for regex-based login blocking; see `WP_FAIL2BAN_BLOCKED_USERS`
@@ -97,6 +100,9 @@ to the `[wordpress]` section in `jail.local`.
 *	Initial release.
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Bugfix in experimental code; still an experimental release.
 
 = 2.0.0 =
 This is an experimental release. If your current version is working and you're not interested in the new features, skip this version - wait for 2.1.0. For those that do want to test this release, note that `wordpress.conf` has changed - you'll need to copy it to `fail2ban/filters.d` again.
