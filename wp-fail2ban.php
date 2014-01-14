@@ -31,7 +31,7 @@ function openlog()
 {
 	\openlog('wordpress('.$_SERVER['HTTP_HOST'].')',
 			 LOG_NDELAY|LOG_PID,
-			 defined(WP_FAIL2BAN_LOG) ? WP_FAIL2BAN_LOG : LOG_AUTH);
+			 defined('WP_FAIL2BAN_LOG') ? WP_FAIL2BAN_LOG : LOG_AUTH);
 }
 
 function bail()
