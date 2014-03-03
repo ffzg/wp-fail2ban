@@ -3,7 +3,7 @@
 Plugin Name: WP fail2ban
 Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Description: Write all login attempts to syslog for integration with fail2ban.
-Version: 2.1.0
+Version: 2.1.1
 Author: Charles Lecklider
 Author URI: https://charles.lecklider.org/
 License: GPL2
