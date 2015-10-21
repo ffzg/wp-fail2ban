@@ -5,7 +5,7 @@ Plugin URI: https://charles.lecklider.org/wordpress/wp-fail2ban/
 Tags: fail2ban, security, syslog, login
 Requires at least: 3.4.0
 Tested up to: 4.3.1
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,7 +99,7 @@ will block any attempt to log in as `admin` before most of the core WordPress co
 
 == Changelog ==
 
-= 2.3.1 =
+= 2.3.2 =
 *	Bugfix `WP_FAIL2BAN_BLOCKED_USERS`.
 
 = 2.3.0 =
