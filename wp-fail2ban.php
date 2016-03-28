@@ -12,7 +12,7 @@
  */
 
 /**
- *  Copyright 2012-15  Charles Lecklider  (email : wordpress@charles.lecklider.org)
+ *  Copyright 2012-16  Charles Lecklider  (email : wordpress@charles.lecklider.org)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License, version 2, as
