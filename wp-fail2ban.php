@@ -325,3 +325,4 @@ function xmlrpc_pingback_error($ixr_error)
     syslog(LOG_NOTICE, 'Pingback error '.$ixr_error->code.' generated');
 }
 add_filter('xmlrpc_pingback_error', __NAMESPACE__.'\xmlrpc_pingback_error', 5);
+
