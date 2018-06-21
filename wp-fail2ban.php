@@ -276,10 +276,10 @@ if (defined('WP_FAIL2BAN_LOG_PASSWORD_REQUEST') && true === WP_FAIL2BAN_LOG_PASS
 function wp_login($user_login, $user)
 {
     openlog();
-    syslog(LOG_INFO, "Accepted password for {$user_login}");
+    //syslog(LOG_INFO, "Accepted password for {$user_login} user=".print_r($user,TRUE));
+    syslog(LOG_INFO, "Accepted password for {$user_login} \"" . $user->display_name . "\" <" . $user->user_email . ">");
 }
 add_action('wp_login', __NAMESPACE__.'\wp_login', 10, 2);
-
 
 /**
  * @since 1.0.0
