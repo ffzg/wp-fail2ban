@@ -161,22 +161,25 @@ function authenticate($user, $username, $password)
         /**
          * @since 3.5.0 Arrays allowed in PHP 7
          */
+/*
         $matched = (is_array(WP_FAIL2BAN_BLOCKED_USERS))
             ? in_array($username, WP_FAIL2BAN_BLOCKED_USERS)
             : preg_match('/'.WP_FAIL2BAN_BLOCKED_USERS.'/i', $username);
 
         if ($matched) {
+*/
             openlog();
-            syslog(LOG_NOTICE, "Blocked authentication attempt for {$username}");
+            //syslog(LOG_NOTICE, "Blocked authentication attempt for {$username}");
+            syslog(LOG_NOTICE, "authenticate for {$username}".print_r($user,TRUE));
             bail();
-        }
+//       }
     }
 
     return $user;
 }
-if (defined('WP_FAIL2BAN_BLOCKED_USERS')) {
+//if (defined('WP_FAIL2BAN_BLOCKED_USERS')) {
 	add_filter('authenticate', __NAMESPACE__.'\authenticate', 1, 3);
-}
+//}
 
 
 /**
@@ -268,6 +271,10 @@ if (defined('WP_FAIL2BAN_LOG_PASSWORD_REQUEST') && true === WP_FAIL2BAN_LOG_PASS
 	add_action('retrieve_password', __NAMESPACE__.'\retrieve_password');
 }
 
+// format user object in form of From: address in e-mail
+function user_from($user) {
+    return ' "' . $user->display_name . '" <' . $user->user_email . '>';
+}
 
 /**
  * @since 1.0.0
@@ -277,7 +284,7 @@ function wp_login($user_login, $user)
 {
     openlog();
     //syslog(LOG_INFO, "Accepted password for {$user_login} user=".print_r($user,TRUE));
-    syslog(LOG_INFO, "Accepted password for {$user_login} \"" . $user->display_name . "\" <" . $user->user_email . ">");
+    syslog(LOG_INFO, "Accepted password for {$user_login}".user_from($user));
 }
 add_action('wp_login', __NAMESPACE__.'\wp_login', 10, 2);
 
@@ -311,7 +318,7 @@ function xmlrpc_login_error($error, $user)
 
     if (++$attempts > 1) {
         openlog();
-        syslog(LOG_NOTICE, 'XML-RPC multicall authentication failure');
+        syslog(LOG_NOTICE, 'XML-RPC multicall authentication failure'.user_from($user));
         bail();
     }
 }
