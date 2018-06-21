@@ -61,6 +61,10 @@ if (!defined('WP_FAIL2BAN_PINGBACK_LOG')) {
     define('WP_FAIL2BAN_PINGBACK_LOG', LOG_USER);
 }
 
+// XXX -- dpavlin -- always unmask localhost addresses
+if (!defined('WP_FAIL2BAN_PROXIES')) {
+    define('WP_FAIL2BAN_PROXIES', '127.0.0.1');
+}
 
 /**
  * @since 3.5.0 Refactored for unit testing
