@@ -84,7 +84,7 @@ function openlog($log = 'WP_FAIL2BAN_AUTH_LOG')
     if (defined('WP_FAIL2BAN_TRUNCATE_HOST') && 1 < intval(WP_FAIL2BAN_TRUNCATE_HOST)) {
         $host = substr($host, 0, intval(WP_FAIL2BAN_TRUNCATE_HOST));
     }
-	if (false === \openlog("$tag($host)", WP_FAIL2BAN_OPENLOG_OPTIONS, constant($log))) {
+	if (false === \openlog("$tag", WP_FAIL2BAN_OPENLOG_OPTIONS, constant($log))) {
         error_log('WPf2b: Cannot open syslog', 0);
     } elseif (defined('WP_DEBUG') && true === WP_DEBUG) {
         error_log('WPf2b: Opened syslog', 0);
@@ -96,6 +96,7 @@ function openlog($log = 'WP_FAIL2BAN_AUTH_LOG')
  */
 function syslog($level, $msg, $remote_addr = null)
 {
+    $msg = "($_SERVER[HTTP_HOST]) $msg";
     $msg .= ' from ';
     $msg .= (is_null($remote_addr))
                 ? remote_addr()
